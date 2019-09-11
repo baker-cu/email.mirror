@@ -33,8 +33,8 @@ class Email {
       System.exit(0);
     }
     PrintWriter outToServer = new PrintWriter(clientSocket.getOutputStream(),true);
-    BufferedReader inFromServer =  new BufferedReader
-        new InputStreamReader(clientSocket.getInputStream()));
+    BufferedReader inFromServer =  new BufferedReader;
+        new InputStreamReader(clientSocket.getInputStream());
 
     String welcomeMessage = inFromServer.readLine();
     System.out.println("FROM SERVER:" + welcomeMessage);
