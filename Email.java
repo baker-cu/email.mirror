@@ -40,11 +40,16 @@ class Email {
 
     //get the body part of the email
     String line;
-    while((line = inFromUser.readLine()) != "."){
-        String[] body = line;
+    while{
+        line = inFromUser.readLine(
+        if(line != "."){
+            String[] body += line;
+        }
+        else{
+            String[] body += line;
+            break;
+        }
     }
-
-
 
     Socket clientSocket = null;
 
@@ -81,9 +86,11 @@ class Email {
 
     //I HAVE NO CLUE WHAT TO PUT HERE YET
 
-
-
-
+    for(int x = 0; x<body.size(); x++)
+    {
+        outToServer.println(body[x]);
+    }
+    outToServer.println("QUIT");
 
     clientSocket.close();
   }
