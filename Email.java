@@ -36,16 +36,16 @@ class Email {
     String line;
     String[] body = new String[100];
     int i = 0;
-    while(body.length < 100) {
-        line = inFromUser.readLine();
-        if(line != "."){
-            body[i] = line;
-            i++;
-        }
-        else{
-            body[i] = line;
-            break;
-        }
+    while (body.length < 100) {
+      line = inFromUser.readLine();
+      if(line != ".") {
+        body[i] = line;
+        i++;
+      }
+      else {
+        body[i] = line;
+        break;
+      }
     }
 
     Socket clientSocket = null;
@@ -84,11 +84,11 @@ class Email {
     //I HAVE NO CLUE WHAT TO PUT HERE YET
 
     for(int x = 0; x<body.length; x++) {
-        if(body[x] == ".") {
-            outToServer.println(".");
-            break;
-        }
-        outToServer.println(body[x]);
+      if(body[x] == ".") {
+        outToServer.println(".");
+        break;
+      }
+      outToServer.println(body[x]);
     }
     outToServer.println("QUIT");
 
