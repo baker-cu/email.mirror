@@ -41,8 +41,7 @@ class Email {
       if (line != ".") {
         body[i] = line;
         i++;
-      }
-      else {
+      } else {
         body[i] = line;
         break;
       }
