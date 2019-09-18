@@ -21,7 +21,7 @@ class Email {
     BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 
     System.out.println("Sender Email: ");
-    String fromEmail = inFromUser.readLine();
+    final String fromEmail = inFromUser.readLine();
 
     System.out.println("Recipient Email: ");
     String toEmail = inFromUser.readLine();
