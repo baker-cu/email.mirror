@@ -33,20 +33,23 @@ class Email {
     String toEmail=inFromUser.readLine();
 
     System.out.println("Sender Name: ");
-    String toEmail=inFromUser.readLine();
+    String sender=inFromUser.readLine();
 
     System.out.println("Sender Name:");
-    String sender = inFromUser.readLine();
+    String recipient = inFromUser.readLine();
 
     //get the body part of the email
     String line;
-    while{
-        line = inFromUser.readLine(
+    String[] body = new String[100];
+    int i = 0;
+    while(body.length<100){
+        line = inFromUser.readLine();
         if(line != "."){
-            String[] body += line;
+            body[i] = line;
+            i++;
         }
         else{
-            String[] body += line;
+            body[i] =  line;
             break;
         }
     }
@@ -75,19 +78,24 @@ class Email {
     System.out.println("MAIL FROM: " + fromEmail);
     outToServer.println("MAIL FROM: " + fromEmail);
 
-    String message = inFromServer.readLine();
+    message = inFromServer.readLine();
     System.out.println("FROM SERVER: " + message);
 
     System.out.println("RCPT TO: " + fromEmail);
     outToServer.println("MAIL FROM: " + fromEmail);
 
-    String message = inFromServer.readLine();
+    message = inFromServer.readLine();
     System.out.println("FROM SERVER: " + message);
 
     //I HAVE NO CLUE WHAT TO PUT HERE YET
 
-    for(int x = 0; x<body.size(); x++)
+    for(int x = 0; x<body.length; x++)
     {
+        if(body[x]==".")
+        {
+            outToServer.println(".");
+            break;
+        }
         outToServer.println(body[x]);
     }
     outToServer.println("QUIT");
