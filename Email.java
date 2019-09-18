@@ -17,14 +17,13 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Arrays;
 
-import java.net.Socket;
+class Email{
+  public static void main(String[] argv) throws Exception{
 
-class Email {
-  public static void main(String[] argv) throws Exception {
-
-    BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader inFromUser=new BufferedReader(new InputStreamReader(System.in));
 
     System.out.println("Sender Email: ");
     String fromEmail=inFromUser.readLine();
@@ -36,60 +35,60 @@ class Email {
     String sender=inFromUser.readLine();
 
     System.out.println("Sender Name:");
-    String recipient = inFromUser.readLine();
+    String recipient=inFromUser.readLine();
 
     //get the body part of the email
     String line;
-    String[] body = new String[100];
-    int i = 0;
+    String[] body=new String[100];
+    int i=0;
     while(body.length<100){
-        line = inFromUser.readLine();
-        if(line != "."){
-            body[i] = line;
+        line=inFromUser.readLine();
+        if(line!="."){
+            body[i]=line;
             i++;
         }
         else{
-            body[i] =  line;
+            body[i]=line;
             break;
         }
     }
 
-    Socket clientSocket = null;
+    Socket clientSocket=null;
 
     try {
-      clientSocket = new Socket("smtp.chapman.edu", 25);
+      clientSocket=new Socket("smtp.chapman.edu", 25);
     } catch (Exception e) {
       System.out.println("Failed to open socket connection");
       System.exit(0);
     }
 
-    PrintWriter outToServer = new PrintWriter(clientSocket.getOutputStream(),true);
-    BufferedReader inFromServer =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    PrintWriter outToServer=new PrintWriter(clientSocket.getOutputStream(),true);
+    BufferedReader inFromServer=new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-    String welcomeMessage = inFromServer.readLine();
+    String welcomeMessage=inFromServer.readLine();
     System.out.println("FROM SERVER:" + welcomeMessage);
 
     System.out.println("FROM CLIENT: HELO icd.chapman.edu");
     outToServer.println("HELO icd.chapman.edu");
 
-    String message = inFromServer.readLine();
+    String message=inFromServer.readLine();
     System.out.println("FROM SERVER: " + message);
 
     System.out.println("MAIL FROM: " + fromEmail);
     outToServer.println("MAIL FROM: " + fromEmail);
 
-    message = inFromServer.readLine();
+    message=inFromServer.readLine();
     System.out.println("FROM SERVER: " + message);
 
     System.out.println("RCPT TO: " + fromEmail);
     outToServer.println("MAIL FROM: " + fromEmail);
 
-    message = inFromServer.readLine();
+    message=inFromServer.readLine();
     System.out.println("FROM SERVER: " + message);
 
     //I HAVE NO CLUE WHAT TO PUT HERE YET
 
-    for(int x = 0; x<body.length; x++)
+    for(int x=0; x<body.length; x++)
     {
         if(body[x]==".")
         {
