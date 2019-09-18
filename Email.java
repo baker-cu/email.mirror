@@ -48,17 +48,17 @@ class Email {
       }
     }
 
-    Socket clientSocket = null;
+    Socket cs = null;
 
     try {
-      clientSocket = new Socket("smtp.chapman.edu", 25);
+      cs = new Socket("smtp.chapman.edu", 25);
     } catch (Exception e) {
       System.out.println("Failed to open socket connection");
       System.exit(0);
     }
 
-    PrintWriter outToServer = new PrintWriter(clientSocket.getOutputStream(),true);
-    BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    PrintWriter outToServer = new PrintWriter(cs.getOutputStream(),true);
+    BufferedReader inFromServer = new BufferedReader(new InputStreamReader(cs.getInputStream()));
 
     String welcomeMessage = inFromServer.readLine();
     System.out.println("FROM SERVER:" + welcomeMessage);
@@ -92,6 +92,6 @@ class Email {
     }
     outToServer.println("QUIT");
 
-    clientSocket.close();
+    cs.close();
   }
 }
