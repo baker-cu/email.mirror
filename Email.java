@@ -1,17 +1,12 @@
 /**
-*  TCP Client Program
-*  Connects to a TCP Server
-*  Waits for a Welcome message from the server
-*  Receives a line of input from the keyboard and sends it to the server
-*  Receives a response from the server and displays it.
-*  Receives a second line of input from the keyboard and sends it to the server
-*  Receives a second response from the server and displays it.
-*  Closes the socket and exits
+*  Connects to socket
+*  Asks user for email information
+*  Sends email
 *
-*  @author: Michael Fahy
-*  Email:  fahy@chapman.edu
-*  Date:  2/4/2018
-*  @version: 3.0
+*  @author: Jacob Baker
+*  Email:  baker210@mail.chapman.edu
+*  Date:  9/17/2019
+*  @version: 1.0
 */
 
 import java.io.BufferedReader;
