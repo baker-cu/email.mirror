@@ -33,18 +33,21 @@ class Email {
     String recipient = inFromUser.readLine();
 
     //get the body part of the email
+    System.out.println("Enter message, and end it with a period on a line alone.");
     String line;
     String[] body = new String[100];
     int i = 0;
-    while (body.length < 100) {
+    while (i < 100) {
       line = inFromUser.readLine();
-      if (line != ".") {
-        body[i] = line;
-        i++;
-      } else {
+      if (line.equals(".")) {
         body[i] = line;
         break;
+      } else {
+          System.out.println("in else");
+          body[i] = line;
+          i++;
       }
+
     }
 
     Socket cs = null;
