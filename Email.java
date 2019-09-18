@@ -29,7 +29,7 @@ class Email {
     System.out.println("Sender Name: ");
     String sender = inFromUser.readLine();
 
-    System.out.println("Sender Name:");
+    System.out.println("Recipient Name:");
     String recipient = inFromUser.readLine();
 
     //get the body part of the email
