@@ -38,7 +38,7 @@ class Email {
     int i = 0;
     while (body.length < 100) {
       line = inFromUser.readLine();
-      if(line != ".") {
+      if (line != ".") {
         body[i] = line;
         i++;
       }
@@ -83,8 +83,8 @@ class Email {
 
     //I HAVE NO CLUE WHAT TO PUT HERE YET
 
-    for(int x = 0; x<body.length; x++) {
-      if(body[x] == ".") {
+    for (int x = 0; x < body.length; x++) {
+      if (body[x] == ".") {
         outToServer.println(".");
         break;
       }
